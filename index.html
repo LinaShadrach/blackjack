@@ -5,23 +5,30 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" media="all">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/scripts.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet">
     <title>Blackjack</title>
   </head>
   <body>
     <div class="container">
-
-
-      <button type="submit" name="button">Play War!</button>
-      <br>
-      <h2>You drew: </h2>
-      <h3><span class="userCard"></span></h3>
-      <br>
-      <h2>Computer drew: </h2>
-      <h3><span class="compCard"></span></h3>
-      <br>
-      <h2 id="winner"><span class="winner"></span> wins!</h2>
-      <h2><span class="tie"></span></h2>
-
+      <div id="draw" class="row text-center">
+        <div class="col-sm-6">
+          <h2 class="title-draw">You drew: </h2>
+          <h3><span class="userCard"></span></h3>
+          <h3><span class="userScore"></span></h3>
+        </div>
+        <div class="col-sm-6">
+          <h2 class="title-draw">Computer drew: </h2>
+          <h3><span class="compCard"></span></h3>
+          <h3><span class="compScore"></span></h3>
+        </div>
+        <div class="col-sm-12">
+          <h2 id="winner"><span class="winner"></span></h2>
+          <h2><span class="tie"></span></h2>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-info btn-lg" type="submit" name="button">Play Blackjack!</button>
+      </div>
     </div>
   </body>
 </html>

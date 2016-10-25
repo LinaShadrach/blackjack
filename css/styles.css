@@ -1,3 +1,25 @@
+body {
+  font-family: 'Cardo', serif;
+}
 #winner {
   display:none;
+  font-weight: 800;
+  font-size: 42px;
+}
+
+#draw {
+  min-height:374px;
+}
+
+#draw .col-sm-6 {
+  margin-bottom: 100px;
+}
+
+.userScore, .compScore, .title-draw {
+  font-weight: 800;
+  font-size: 42px;
+}
+
+.btn-lg {
+  font-size: 26px;
 }
