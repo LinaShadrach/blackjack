@@ -109,9 +109,16 @@ compare(userScore, compScore);
 $(document).ready(function(){
 
 
-  $("button").click(function(event){
+  $("button#start").click(function(event){
     $(".tie").hide();
     $("#winner").hide();
+    $(".userScore").empty();
+    $(".compScore").empty();
+    $("ul#userCards").empty();
+    $("ul#compCards").empty();
+    $("#hit").attr("disabled",false);
+    $("#start").attr("disabled",true);
+    $("#show").attr("disabled",false);
     inputName1=("Lina");
     inputName2=("Diego");
     deck = buildDeck();
@@ -124,25 +131,51 @@ $(document).ready(function(){
     player1.updateScore(calculate(player1.cards));
     player2.updateScore(calculate(player2.cards));
 
-
-    $(".userCard").text("The " + player1.cards[0].rank + " of " + player1.cards[0].suit + " and the " + player1.cards[1].rank + " of " + player1.cards[1].suit);
-    $(".compCard").text("The " + player2.cards[0].rank + " of " + player2.cards[0].suit + " and the " + player2.cards[1].rank + " of " + player2.cards[1].suit);
+    $("#userCards").append("<li>The " + player1.cards[0].rank + " of " + player1.cards[0].suit +"</li><li>  the " + player1.cards[1].rank + " of " + player1.cards[1].suit+"</li>");
+    $("#compCards").append("<li>The " + player2.cards[0].rank + " of " + player2.cards[0].suit + "</li>");
     $(".userScore").text(player1.currentScore);
+    $(".compScore").text(player2.cards[0].val);
+
+
+  event.preventDefault();
+  });
+  $("button#hit").click(function(event){
+    $(".tie").hide();
+    $("#winner").hide();
+    player1.addCard(getCard(deck));
+    player1.updateScore(calculate(player1.cards));
+    $("#userCards").append("<li>The " + player1.cards[player1.cards.length-1].rank + " of " + player1.cards[player1.cards.length-1].suit +"</li>");
+    $(".userScore").text(player1.currentScore);
+    if (player1.currentScore >21 ){
+        $(".winner").text("Computer wins!");
+        $("#winner").show();
+    }
+    event.preventDefault();
+  });
+
+  $("button#show").click(function(event){
+    $(".tie").hide();
+    $("#winner").hide();
+    $("#hit").attr("disabled",true);
+    $("#start").attr("disabled",false);
+    $("#show").attr("disabled",true);
+    $("#compCards").append("<li> the " + player2.cards[1].rank + " of " + player2.cards[1].suit+"</li>");
     $(".compScore").text(player2.currentScore);
+    if (player1.currentScore <=21 || player2.currentScore <=21){
+      if(compare(player1.currentScore, player2.currentScore) === "userWins"){
+        $(".winner").text("You win!");
+        $("#winner").show();
+      }
+      else if (compare(player1.currentScore, player2.currentScore) === "compWins") {
+        $(".winner").text("Computer wins.");
+        $("#winner").show();
+      }
+      else {
+        $(".tie").text("it's a tie!");
+        $(".tie").show();
 
-    if(compare(player1.currentScore, player2.currentScore) === "userWins"){
-      $(".winner").text("You win!");
-      $("#winner").show();
-    }
-    else if (compare(player1.currentScore, player2.currentScore) === "compWins") {
-      $(".winner").text("Computer wins.");
-      $("#winner").show();
-    }
-    else {
-      $(".tie").text("it's a tie!");
-      $(".tie").show();
-
-    }
-event.preventDefault();
+      }
+    };
+    event.preventDefault();
   });
 });

@@ -13,12 +13,16 @@
       <div id="draw" class="row text-center">
         <div class="col-sm-6">
           <h2 class="title-draw">You drew: </h2>
-          <h3><span class="userCard"></span></h3>
+          <ul id="userCards">
+
+          </ul>
           <h3><span class="userScore"></span></h3>
         </div>
         <div class="col-sm-6">
           <h2 class="title-draw">Computer drew: </h2>
-          <h3><span class="compCard"></span></h3>
+          <ul id="compCards">
+
+          </ul>
           <h3><span class="compScore"></span></h3>
         </div>
         <div class="col-sm-12">
@@ -27,7 +31,9 @@
         </div>
       </div>
       <div class="text-center">
-        <button class="btn btn-info btn-lg" type="submit" name="button">Play Blackjack!</button>
+        <button class="btn btn-info btn-lg" type="submit" id="start">Play Blackjack!</button>
+        <button type="button" id="hit" class="btn btn-info" name="button" disabled>Hit</button>
+        <button type="button" id="show" class="btn btn-info" name="button" disabled>Show cards</button>
       </div>
     </div>
   </body>
